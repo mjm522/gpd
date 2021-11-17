@@ -157,6 +157,11 @@ class GraspDetector {
   std::vector<std::unique_ptr<candidate::Hand>> selectGrasps(
       std::vector<std::unique_ptr<candidate::Hand>> &hands) const;
 
+
+  std::vector<std::unique_ptr<candidate::Hand>> selectClusterGrasps(
+      std::vector<std::unique_ptr<candidate::Hand>> &hands,
+      const util::Cloud &cloud) const;
+
   /**
    * \brief Compare the scores of two given grasps.
    * \param hand1 the first grasp to be compared

@@ -301,3 +301,22 @@ set_target_properties(${PROJECT_NAME}_grasp_detector
 install(TARGETS ${PROJECT_NAME}_grasp_detector DESTINATION lib)
 
 install(DIRECTORY include/gpd DESTINATION include)
+
+
+
+####python binding
+find_package(Python3 COMPONENTS Interpreter Development)
+find_package(Boost COMPONENTS python${PYTHON_VERSION_SUFFIX})
+find_package(PythonLibs 3 REQUIRED)
+
+message(STATUS "PYTHON_LIBRARIES = ${PYTHON_LIBRARIES}")
+message(STATUS "PYTHON_EXECUTABLE = ${Python3_EXECUTABLE}")
+message(STATUS "PYTHON_INCLUDE_DIRS = ${PYTHON_INCLUDE_DIRS}")
+message(STATUS "Boost_LIBRARIES = ${Boost_LIBRARIES}")
+message(STATUS "Python3_SITELIB" = ${Python3_SITELIB})
+
+ENABLE_TESTING()
+INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS} ${PYTHON_INCLUDE_DIRS})
+LINK_LIBRARIES(${Boost_LIBRARIES} ${PYTHON_LIBRARIES}) # Deprecated but so convenient!
+
+ADD_SUBDIRECTORY(gpd_py)
